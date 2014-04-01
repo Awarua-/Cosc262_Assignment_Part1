@@ -6,58 +6,67 @@
 
 import random
 from time import time, clock
+c = 0
 
-
-def out(n):
+def out(n, a):
     for i in range(1, n+1):
         print(a[i])
     print('\n')
 
 
-def sort(left, right):
+def sort(left, right, a):
     if left < right:
-        m = partition(left, right)
-        sort(left, m - 1)
-        sort(m + 1, right)
+        m = partition(left, right, a)
+        sort(left, m - 1, a)
+        sort(m + 1, right, a)
 
 
-def partition(left, right):      # x is the pivot
+def partition(left, right, a):      # x is the pivot
+    global c
     x = a[left]
     i = left
     j = right + 1  # i goes right, j goes left
+
     while i < j:
         j -= 1
+
         if i == j:
             break
+
         while a[j] >= x:          # while a[j]>=x,
+            c += 1
             j -= 1                # j goes left
             if i == j:
                 break
+        c += 1
+
         if i == j:
             break
-        a[i] = a[j]               # a[j] is copied to a[i]
+        a[i] = a[j]
         i += 1
         if i == j:
             break
+
         while a[i] <= x:          # while a[i]<=x,
+            c += 1
             i += 1                # i goes right
             if i == j:
                 break
+        c += 1
         if i == j:
             break
+
         a[j] = a[i]               # a[i] is copied to a[j]
     a[i] = x                    # pivot x settles down at i
     return i
 
-
-# {main program}
-n = input('input n ')
-a = []
-for i in range(0, 10000):
-    a += [int(100 * random.random())]
-#out(n)
-t = clock()
-sort(1, n)
-out(n)
-print('time ', clock() - t)
-n = input('finished ')
+def main(n, a):
+    print(a)
+    b = c
+    # {main program}
+    t = clock()
+    sort(1, n, a)
+    print(a)
+    print(b)
+    print(c)
+    print('time ', clock()-t, 'c =', c - b)
