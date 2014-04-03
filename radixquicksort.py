@@ -1,8 +1,4 @@
-# This is quicksort
-# sort(left,right) sorts array a from position left to right
-# partition(left,right) partitions array a from position left to right
-# with pivot x=a[left], and returns m such that after partition
-# a[left .. m-1] <= x=a[m] <= a[m+1 .. right]
+__author__ = 'Dion'
 
 from time import clock
 c = 0

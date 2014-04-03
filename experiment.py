@@ -1,20 +1,15 @@
 # This is a template for running experiments.
-# EAch program is run once. You should run each program five times or
+# Each program is run once. You should run each program five times or
 # more and take the average time.
 
 import random
+
 import heapsort
 import quicksort
 import mergesort
-
-from time import time, clock
-
-
-
-def out(n, a):
-    for i in range(1, n + 1):
-        print(a[i])
-    print('\n')
+import change_base
+import radixsort
+import radixquicksort
 
 
 def run_quicksort(n, a):
@@ -35,6 +30,18 @@ def run_heapsort(n, a):
     print('heapsort done' + "\n")
 
 
+def run_radixsort(a, base, max_num_len):
+    print("radix-" + str(base) + "-sort start")
+    radixsort.main(a, base, max_num_len)
+    print("radix-" + str(base) + "-sort done" + "\n")
+
+
+def run_radixquicksort(n, a):
+    print("radix-quicksort start")
+    radixquicksort.main(n, a)
+    print('radix-quicksort done' + "\n")
+
+
 def main(n):
     # main program
 
@@ -43,14 +50,11 @@ def main(n):
         data += [int(100 * random.random())]
     print()
 
-
     ## Experiment on heapsort ##
     a = []
     for i in range(0, n + 1):
         a += [data[i]]
     run_heapsort(n, a)
-
-
 
     ## Experiment on quicksort ##
     a = []
@@ -58,13 +62,26 @@ def main(n):
         a += [data[i]]
     run_quicksort(n, a)
 
-
-
     ## Experiment on mergesort ##
     a = []
     for i in range(0, n + 1):
         a += [data[i]]
     run_mergesort(n, a)
+
+    ##Experiment on Radix-10 sort##
+    base = 10
+    a = change_base.main(data, base, 99)
+    run_radixsort(a, base, len(change_base.change_base(99, base)))
+
+    ##Experiment on Radix-2 sort##
+    base = 2
+    a = change_base.main(data, base, 99)
+    run_radixsort(a, base, len(change_base.change_base(99, base)))
+
+    ##Experiment on Radix-quick sort##
+    base = 2
+    a = change_base.main(data, base, 99)
+    run_radixquicksort(n, a)
 
 
 n = int(input('input n '))

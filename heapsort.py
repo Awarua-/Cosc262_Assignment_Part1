@@ -3,15 +3,10 @@
 # sift(p,q) heapifies array a from position p to q
 # heap is a max-heap, that is, maximum at the root
 
-import random
-from time import time, clock
+
+from time import clock
 
 c = 0
-
-def out(n, a):
-    for i in range(1, n + 1):
-        print(a[i])
-    print('\n')
 
 
 def swap(i, j, a):  # This swaps a[i] and a[j]
@@ -25,8 +20,8 @@ def siftup(p, q, a):      # This is to heapify a when a[p] is wrong
     y = a[p]  # a[p] is saved to y
     j = p
     k = 2 * p
-    isHeap = False
-    while k <= q and not isHeap:
+    isheap = False
+    while k <= q and not isheap:
         z = a[k]
         if k < q:
             c += 1
@@ -35,7 +30,7 @@ def siftup(p, q, a):      # This is to heapify a when a[p] is wrong
                 z = a[k]
         c += 1
         if y >= z:
-            isHeap = True
+            isheap = True
         else:
             a[j] = z
             j = k
@@ -58,17 +53,8 @@ def sort(n, a):
 # {main program}
 def main(n, a):
     # out(n)
-    print(a)
     b = c
     t = clock()
     sort(n, a)
     # out(n)
-
-    print(a)
-    print(b)
-    print(c)
     print('time ', clock()-t, 'c =', c - b)
-
-# main(10, [88, 50, 23, 61, 85, 20, 86, 49, 66, 33, 3])
-# main(10, [88, 50, 23, 61, 85, 20, 86, 49, 66, 33, 3])
-
