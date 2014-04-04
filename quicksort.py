@@ -69,7 +69,7 @@ def main(n, a):
     sort(1, n, a)
     print('time ', clock()-t, 'c =', c - b)
 
-    if n < 20000:
+    if n <= 9000:
         print("double quicksort start")
         b = c
         t = clock()
