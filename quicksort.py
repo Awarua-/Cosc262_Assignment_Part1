@@ -7,6 +7,12 @@
 from time import clock
 c = 0
 
+import threading
+import sys
+threading.stack_size(134217728)
+sys.setrecursionlimit(10 ** 8)
+
+
 
 def sort(left, right, a):
     if left < right:
@@ -62,3 +68,11 @@ def main(n, a):
     t = clock()
     sort(1, n, a)
     print('time ', clock()-t, 'c =', c - b)
+
+    if n < 20000:
+        print("double quicksort start")
+        b = c
+        t = clock()
+        sort(1, n, a)
+        print('time ', clock()-t, 'c =', c - b)
+        print('double quicksort finish')

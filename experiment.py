@@ -36,9 +36,9 @@ def run_radixsort(a, base, max_num_len):
     print("radix-" + str(base) + "-sort done" + "\n")
 
 
-def run_radixquicksort(n, a):
+def run_radixquicksort(n, a, max_len):
     print("radix-quicksort start")
-    radixquicksort.main(n, a)
+    radixquicksort.main(n, a, max_len)
     print('radix-quicksort done' + "\n")
 
 
@@ -50,11 +50,11 @@ def main(n):
         data += [int(100 * random.random())]
     print()
 
-    ## Experiment on heapsort ##
-    a = []
-    for i in range(0, n + 1):
-        a += [data[i]]
-    run_heapsort(n, a)
+    # ## Experiment on heapsort ##
+    # a = []
+    # for i in range(0, n + 1):
+    #     a += [data[i]]
+    # run_heapsort(n, a)
 
     ## Experiment on quicksort ##
     a = []
@@ -62,11 +62,11 @@ def main(n):
         a += [data[i]]
     run_quicksort(n, a)
 
-    ## Experiment on mergesort ##
-    a = []
-    for i in range(0, n + 1):
-        a += [data[i]]
-    run_mergesort(n, a)
+    # ## Experiment on mergesort ##
+    # a = []
+    # for i in range(0, n + 1):
+    #     a += [data[i]]
+    # run_mergesort(n, a)
 
     ##Experiment on Radix-10 sort##
     base = 10
@@ -81,8 +81,12 @@ def main(n):
     ##Experiment on Radix-quick sort##
     base = 2
     a = change_base.main(data, base, 99)
-    run_radixquicksort(n, a)
+    run_radixquicksort(n, a, len(change_base.change_base(99, base)))
 
+    # ##Experiment on Radix-1 sort##
+    # base = 1
+    # a = change_base.main(data, base, 99)
+    # run_radixsort(a, base, len(change_base.change_base(99, base)))
 
 n = int(input('input n '))
 while n != 0:
