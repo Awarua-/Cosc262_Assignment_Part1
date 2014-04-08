@@ -54,4 +54,4 @@ def main(n, a):
         b += [0]
     t = clock()
     mergesort(1, n, a, b)
-    print('time ', clock() - t, 'c =', c - d)
+    return clock() - t, c - d

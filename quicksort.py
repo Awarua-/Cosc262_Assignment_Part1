@@ -13,7 +13,6 @@ threading.stack_size(134217728)
 sys.setrecursionlimit(10 ** 8)
 
 
-
 def sort(left, right, a):
     if left < right:
         m = partition(left, right, a)
@@ -33,12 +32,12 @@ def partition(left, right, a):      # x is the pivot
         if i == j:
             break
 
+        c += 1
         while a[j] >= x:          # while a[j]>=x,
-            c += 1
             j -= 1                # j goes left
             if i == j:
                 break
-        c += 1
+            c += 1
 
         if i == j:
             break
@@ -47,12 +46,12 @@ def partition(left, right, a):      # x is the pivot
         if i == j:
             break
 
+        c += 1
         while a[i] <= x:          # while a[i]<=x,
-            c += 1
             i += 1                # i goes right
             if i == j:
                 break
-        c += 1
+            c += 1
         if i == j:
             break
 
@@ -67,12 +66,16 @@ def main(n, a):
     # {main program}
     t = clock()
     sort(1, n, a)
-    print('time ', clock()-t, 'c =', c - b)
-
+    t = clock() - t
+    qc = c - b
     if n <= 9000:
-        print("double quicksort start")
-        b = c
-        t = clock()
+        d = c
+        t2 = clock()
         sort(1, n, a)
-        print('time ', clock()-t, 'c =', c - b)
-        print('double quicksort finish')
+        t2 = clock() - t2
+        dqc = c - d
+    else:
+        t2 = 0
+        dqc = 0
+
+    return t, qc, t2, dqc

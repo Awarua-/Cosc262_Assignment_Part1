@@ -2,8 +2,6 @@
 # sort() sorts array a in descending order
 # sift(p,q) heapifies array a from position p to q
 # heap is a max-heap, that is, maximum at the root
-
-
 from time import clock
 
 c = 0
@@ -52,9 +50,9 @@ def sort(n, a):
 
 # {main program}
 def main(n, a):
-    # out(n)
     b = c
     t = clock()
     sort(n, a)
-    # out(n)
-    print('time ', clock()-t, 'c =', c - b)
+    t = clock() - t
+    return t, c - b
+
