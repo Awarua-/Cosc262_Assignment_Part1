@@ -106,8 +106,9 @@ def main(n):
         for i in range(0, n + 1):
             a += [data[i]]
         quickradixt = clock()
-        len_max_num = len(bin(max[2:]))
-        sorted_a = quickradixsort.main(a, len_max_num)
+        x = bin(max)[2:]
+        length = len(x)
+        sorted_a = quickradixsort.main(a, length)
         quickradixsort_results.append(clock() - quickradixt)
 
     return heapsort_results, quicksort_results, doublequicksort_results, mergesort_results, radix2sort_results,\
