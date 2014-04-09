@@ -1,8 +1,6 @@
 __author__ = 'Dion'
 
 
-import change_base
-
 def main(a, base, max_len):
     buckets = []
     for i in range(0, base):
@@ -11,10 +9,8 @@ def main(a, base, max_len):
     i = 0
     while i < max_len:
         for k in a[1:]:
-            try:
-                buckets[k[i]].append(k)
-            except IndexError:
-                buckets[0].append(k)
+            x = (k // base ** i) % base
+            buckets[x].append(k)
 
         a = a[:1]
         for j in buckets:

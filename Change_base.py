@@ -9,7 +9,7 @@ def change_base(num, base):
 
     while current != 0:
         remainder = current % base
-        new_num.append(remainder)
+        new_num.appendleft(remainder)
         current = current // base
 
     return new_num
@@ -41,7 +41,7 @@ def main(list_of_nums, base, max_num, quickradix):
         return new_num_list, max_length
 
 
-def revert_base(list_of_nums, base, max_length):
+def revert_base(list_of_nums, base):
     org_nums = []
     for i in list_of_nums:
         org_num = 0
