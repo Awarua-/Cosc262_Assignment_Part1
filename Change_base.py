@@ -54,5 +54,3 @@ def revert_base(list_of_nums, base):
                 power += 1
         org_nums.append(org_num)
     return org_nums
-
-

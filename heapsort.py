@@ -55,4 +55,3 @@ def main(n, a):
     sort(n, a)
     t = clock() - t
     return t, c - b
-
