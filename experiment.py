@@ -9,6 +9,7 @@ import quicksort
 import mergesort
 import quickradixsort
 import radix_r_sort
+import change_base
 
 
 def main(n):
@@ -42,6 +43,7 @@ def main(n):
         heapsort_results[0].append(heapt)
         heapsort_results[1].append(heapc)
 
+
         ## Experiment on quicksort ##
         a = []
         for i in range(0, n + 1):
@@ -67,25 +69,28 @@ def main(n):
         for i in range(0, n + 1):
             a += [data[i]]
         radix2t = clock()
-        sorted_a = radix_r_sort.main(a, base, len(str(max)))
+        x = bin(max)[2:]
+        sorted_a = radix_r_sort.main(a, base, len(x))
         radix2sort_results.append(clock() - radix2t)
 
         ##Experiment on Radix-3 sort##
-        base = 2
+        base = 3
         a = []
         for i in range(0, n + 1):
             a += [data[i]]
         radix3t = clock()
-        sorted_a = radix_r_sort.main(a, base, len(str(max)))
+        num_max_len = len(list(change_base.change_base(max, base)))
+        sorted_a = radix_r_sort.main(a, base, num_max_len)
         radix3sort_results.append(clock() - radix3t)
 
         ##Experiment on Radix-4 sort##
-        base = 2
+        base = 4
         a = []
         for i in range(0, n + 1):
             a += [data[i]]
         radix4t = clock()
-        sorted_a = radix_r_sort.main(a, base, len(str(max)))
+        num_max_len = len(list(change_base.change_base(max, base)))
+        sorted_a = radix_r_sort.main(a, base, num_max_len)
         radix4sort_results.append(clock() - radix4t)
 
         ##Experiment on Radix-r sort##
@@ -97,7 +102,8 @@ def main(n):
             for i in range(0, n + 1):
                 a += [data[i]]
             radixt = clock()
-            sorted_a = radix_r_sort.main(a, base, len(str(max)))
+            num_max_len = len(list(change_base.change_base(max, base)))
+            sorted_a = radix_r_sort.main(a, base, num_max_len)
             radixsort_results[counter].append(clock() - radixt)
             counter += 1
 

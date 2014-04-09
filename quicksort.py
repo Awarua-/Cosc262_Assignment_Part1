@@ -66,12 +66,14 @@ def main(n, a):
     # {main program}
     t = clock()
     sort(1, n, a)
+    assert a[1:] == sorted(a[1:]), "List not sorted, error!!!!!!!!!!"
     t = clock() - t
     qc = c - b
     if n <= 9000:
         d = c
         t2 = clock()
         sort(1, n, a)
+        assert a[1:] == sorted(a[1:]), "List not sorted, error!!!!!!!!!!"
         t2 = clock() - t2
         dqc = c - d
     else:

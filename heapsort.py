@@ -53,5 +53,6 @@ def main(n, a):
     b = c
     t = clock()
     sort(n, a)
+    assert a[1:] == sorted(a[1:]), "List not sorted, error!!!!!!!!!!"
     t = clock() - t
     return t, c - b

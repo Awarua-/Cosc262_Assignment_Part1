@@ -54,4 +54,5 @@ def main(n, a):
         b += [0]
     t = clock()
     mergesort(1, n, a, b)
+    assert a[1:] == sorted(a[1:]), "List not sorted, error!!!!!!!!!!"
     return clock() - t, c - d
