@@ -72,6 +72,7 @@ def main(n):
         x = bin(max)[2:]
         sorted_a = radix_r_sort.main(a, base, len(x))
         radix2sort_results.append(clock() - radix2t)
+        assert sorted_a[1:] == sorted(sorted_a[1:]), "List not sorted, error!!!!!!!!!!"
 
         ##Experiment on Radix-3 sort##
         base = 3
@@ -82,6 +83,7 @@ def main(n):
         num_max_len = len(list(change_base.change_base(max, base)))
         sorted_a = radix_r_sort.main(a, base, num_max_len)
         radix3sort_results.append(clock() - radix3t)
+        assert sorted_a[1:] == sorted(sorted_a[1:]), "List not sorted, error!!!!!!!!!!"
 
         ##Experiment on Radix-4 sort##
         base = 4
@@ -92,8 +94,9 @@ def main(n):
         num_max_len = len(list(change_base.change_base(max, base)))
         sorted_a = radix_r_sort.main(a, base, num_max_len)
         radix4sort_results.append(clock() - radix4t)
+        assert sorted_a[1:] == sorted(sorted_a[1:]), "List not sorted, error!!!!!!!!!!"
 
-        ##Experiment on Radix-r sort##
+        ##Experiment on Radix-r sort with stepping of 5##
         counter = 0
         for i in range(5, radix_max_base + 1, 5):
 
@@ -105,6 +108,7 @@ def main(n):
             num_max_len = len(list(change_base.change_base(max, base)))
             sorted_a = radix_r_sort.main(a, base, num_max_len)
             radixsort_results[counter].append(clock() - radixt)
+            assert sorted_a[1:] == sorted(sorted_a[1:]), "List not sorted, error!!!!!!!!!!"
             counter += 1
 
         ##Experiment on Quick-Radix sort##
@@ -116,6 +120,7 @@ def main(n):
         length = len(x)
         sorted_a = quickradixsort.main(a, length)
         quickradixsort_results.append(clock() - quickradixt)
+        assert sorted_a[1:] == sorted(sorted_a[1:]), "List not sorted, error!!!!!!!!!!"
 
     return heapsort_results, quicksort_results, doublequicksort_results, mergesort_results, radix2sort_results,\
            radix3sort_results, radix4sort_results, quickradixsort_results, radixsort_results, radix_max_base

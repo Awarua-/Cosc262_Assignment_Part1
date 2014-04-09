@@ -21,5 +21,4 @@ def main(a, max_len):
 
     # {main program}
     result = sort(a[1:], max_len, current_len=max_len, result=[])
-    assert result[1:] == sorted(result[1:]), "List not sorted, error!!!!!!!!!!"
     return result

@@ -19,5 +19,5 @@ def main(a, base, max_len):
 
         i += 1
 
-    assert a[1:] == sorted(a[1:]), "List not sorted, error!!!!!!!!!!"
+
     return a
