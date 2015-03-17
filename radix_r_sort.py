@@ -1,10 +1,10 @@
 __author__ = 'Dion'
 
 
-def main(a, base, max_len):
+def main(data, base, max_len):
     """
     Runs the algorithm
-    :param a: the data array
+    :param data: the data array
     :param base: the base of the data in a
     :param max_len: the maximum number of places in the largest data entry in a
     :return:
@@ -17,15 +17,19 @@ def main(a, base, max_len):
 
     i = 0
     while i < max_len:
-        for k in a[1:]:
+        # sort current place into buckets
+        for k in data[1:]:
             x = (k // base ** i) % base
             buckets[x].append(k)
 
-        a = a[:1]
+        # reset the data array
+        # copy the results out of the buckets back into the data array
+        # and empty the bucket array
+        data = data[:1]
         for j in buckets:
             r, j[:] = j[:], []
-            a.extend(r)
+            data.extend(r)
 
         i += 1
 
-    return a
+    return data
