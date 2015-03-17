@@ -2,8 +2,17 @@ __author__ = 'Dion'
 
 
 def main(a, base, max_len):
+    """
+    Runs the algorithm
+    :param a: the data array
+    :param base: the base of the data in a
+    :param max_len: the maximum number of places in the largest data entry in a
+    :return:
+    """
+
+    # Create an array of buckets according to the base
     buckets = []
-    for i in range(0, base):
+    for _ in range(0, base):
         buckets.append([])
 
     i = 0
@@ -18,6 +27,5 @@ def main(a, base, max_len):
             a.extend(r)
 
         i += 1
-
 
     return a
